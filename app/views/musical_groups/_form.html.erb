@@ -1,0 +1,29 @@
+<%= form_for(@musical_group) do |f| %>
+  <% if @musical_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@musical_group.errors.count, "error") %> prohibited this musical_group from being saved:</h2>
+
+      <ul>
+      <% @musical_group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :musical_style_id %><br />
+    <%= f.collection_select :musical_style_id, MusicalStyle.all, :id, :name, :prompt => true %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :imagen %><br />
+    <%= f.text_field :imagen %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
